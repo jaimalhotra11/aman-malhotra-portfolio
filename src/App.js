@@ -340,7 +340,9 @@ export default function App() {
           <div className="card">
             <div className="grid2">
               <div className="info-row"><span className="info-lbl">Full Name</span><span className="info-val">Aman Malhotra</span></div>
-              <div className="info-row"><span className="info-lbl">Date of Birth</span><span className="info-val">19 December 1997 · Age 28</span></div>
+              <div className="info-row"><span className="info-lbl">Date of Birth</span><span className="info-val">19 December 1997</span></div>
+              <div className="info-row"><span className="info-lbl">Time of Birth</span><span className="info-val">5:15 PM</span></div>
+              <div className="info-row"><span className="info-lbl">Place of Birth</span><span className="info-val">Bharatpur</span></div>
               <div className="info-row"><span className="info-lbl">Height</span><span className="info-val">5 Feet 11 Inches</span></div>
               <div className="info-row"><span className="info-lbl">City & State</span><span className="info-val">Faridabad, Haryana</span></div>
             </div>
