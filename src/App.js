@@ -258,7 +258,6 @@ export default function App() {
         {/* Hero */}
         <section className="hero">
           <span className="om">ॐ</span>
-          <div className="swirl-line">विवाह परिचय पत्र</div>
 
           <div className="photo-hero">
             {photos.map((p, i) => (
