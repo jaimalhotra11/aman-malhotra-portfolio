@@ -89,6 +89,11 @@ export default function App() {
         .swirl-line::after { background: linear-gradient(90deg, var(--gold), transparent); }
 
         /* Photo carousel */
+        .photo-hero-wrap {
+          position: relative;
+          margin-bottom: 1.5rem;
+          display: inline-block;
+        }
         .photo-hero {
           width: min(280px, 68vw);
           height: min(380px, 92vw);
@@ -96,9 +101,7 @@ export default function App() {
           overflow: hidden;
           border: 3px solid var(--gold);
           box-shadow: 0 8px 40px rgba(201,168,76,0.25), 0 2px 8px rgba(0,0,0,0.12);
-          margin-bottom: 2rem;
           position: relative;
-          flex-shrink: 0;
         }
         .photo-hero img {
           width: 100%; height: 100%; object-fit: cover; object-position: top center;
@@ -107,6 +110,21 @@ export default function App() {
         }
         .photo-hero img.active { opacity: 1; }
         .photo-hero img.hidden { opacity: 0; }
+
+        .slider-arrow {
+          position: absolute; top: 50%; transform: translateY(-50%);
+          width: 36px; height: 36px; border-radius: 50%;
+          background: rgba(255,250,240,0.92); border: 1.5px solid var(--gold);
+          color: var(--gold-dark); font-size: 1.3rem; line-height: 1;
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; z-index: 10;
+          box-shadow: 0 2px 10px rgba(201,168,76,0.25);
+          transition: background 0.2s, transform 0.15s;
+          user-select: none;
+        }
+        .slider-arrow.prev { left: -18px; }
+        .slider-arrow.next { right: -18px; }
+        .slider-arrow:hover { background: var(--gold-light); }
 
         .photo-dots {
           display: flex; gap: 6px; justify-content: center; margin-bottom: 1.5rem;
@@ -186,6 +204,16 @@ export default function App() {
         }
         .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(201,168,76,0.25); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+        .gallery-overlay {
+          position: absolute; bottom: 0; left: 0; right: 0;
+          background: linear-gradient(transparent, rgba(10,7,3,0.62));
+          padding: 1.2rem 0.5rem 0.6rem;
+          display: flex; align-items: center; justify-content: center;
+          gap: 0.3rem; color: #fff; font-size: 0.7rem;
+          letter-spacing: 0.08em; text-transform: uppercase;
+          opacity: 0; transition: opacity 0.25s;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
 
         /* Lightbox */
         .lightbox-overlay {
@@ -259,10 +287,14 @@ export default function App() {
         <section className="hero">
           <span className="om">ॐ</span>
 
-          <div className="photo-hero">
-            {photos.map((p, i) => (
-              <img key={i} src={p.src} alt={p.caption} className={i === activePhoto ? 'active' : 'hidden'} />
-            ))}
+          <div className="photo-hero-wrap">
+            <button className="slider-arrow prev" onClick={() => setActivePhoto(p => (p - 1 + photos.length) % photos.length)}>&#8249;</button>
+            <div className="photo-hero">
+              {photos.map((p, i) => (
+                <img key={i} src={p.src} alt={p.caption} className={i === activePhoto ? 'active' : 'hidden'} />
+              ))}
+            </div>
+            <button className="slider-arrow next" onClick={() => setActivePhoto(p => (p + 1) % photos.length)}>&#8250;</button>
           </div>
 
           <div className="photo-dots">
@@ -297,6 +329,7 @@ export default function App() {
               {photos.map((p, i) => (
                 <div key={i} className="gallery-item" onClick={() => setLightbox(i)}>
                   <img src={p.src} alt={`Photo ${i + 1}`} />
+                  <div className="gallery-overlay">⊕ View full</div>
                 </div>
               ))}
             </div>
