@@ -304,7 +304,7 @@ export default function App() {
           </div>
 
           <h1 className="name-hero">Aman Malhotra</h1>
-          <p className="tagline">Software Engineer · Entrepreneur · Explorer</p>
+          <p className="tagline">Cloud Engineer · Entrepreneur · Explorer</p>
 
           <div className="hero-pills">
             <span className="hero-pill">28 Years</span>
@@ -375,7 +375,7 @@ export default function App() {
           <div className="card">
             <div className="grid2">
               <div className="info-row"><span className="info-lbl">Qualification</span><span className="info-val">MBA</span></div>
-              <div className="info-row"><span className="info-lbl">Profession</span><span className="info-val">Software Engineer</span></div>
+              <div className="info-row"><span className="info-lbl">Profession</span><span className="info-val">Cloud Engineer</span></div>
               <div className="info-row"><span className="info-lbl">Company</span><span className="info-val">MNC, Gurugram</span></div>
               <div className="info-row"><span className="info-lbl">Entrepreneurship</span><span className="info-val">Own Startup</span></div>
               <div className="info-row" style={{ gridColumn: '1 / -1' }}>
